@@ -19,7 +19,7 @@ const create = async (req, res) => {
   const {title, type, url} = req.body;
   
   try {
-    const user = await User.findOne({where: {id: userId}});
+    // const user = await User.findOne({where: {id: userId}});
     const link = await Link.create({title, url, type, userId});
     return res.json(link);
   } catch (err) {
@@ -32,8 +32,23 @@ const create = async (req, res) => {
 const get = async (req, res) => {
   const {userId, id} = req.params;
   try {
-    const user = await User.findOne({where: {id: userId}});
+    // const user = await User.findOne({where: {id: userId}});
     const link = await Link.findOne({where: {id, userId}})
+    return res.json(link);
+  } catch (err) {
+    console.log(err)
+    // const messages = err.errors.map((error) =>  {return {message: error.message}});
+    return res.status(500).json({error: "Something went wrong"})
+  }  
+}
+
+// DELETE /v1/users/:userId/links/id
+const remove = async (req, res) => {
+  const {userId, id} = req.params;
+  try {
+    // const user = await User.findOne({where: {id: userId}});
+    const link = await Link.findOne({where: {id, userId}})
+    await link.destroy()
     return res.json(link);
   } catch (err) {
     console.log(err)
@@ -45,5 +60,6 @@ const get = async (req, res) => {
 module.exports = {
   getAllByUserId,
   create,
-  get
+  get,
+  remove
 }

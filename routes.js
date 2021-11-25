@@ -4,4 +4,5 @@ module.exports = (app) => {
   app.get(`/v1/users/:userId/links`, linksController.getAllByUserId)
   app.post(`/v1/users/:userId/links`, linksController.create)
   app.get(`/v1/users/:userId/links/:id`, linksController.get)
+  app.delete(`/v1/users/:userId/links/:id`, linksController.remove)
 }

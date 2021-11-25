@@ -15,6 +15,13 @@ const getAllByUserId = async (req, res) => {
 }
 
 // POST /v1/users/:userId/links
+// example
+// {
+//   userId: 2, (require)
+//   type:"classic", (require)
+//   url: "https://www.google.com", (option, depends on type)
+//   title: "Google"  (option, depends on type)
+// }
 const create = async (req, res) => {
   const {userId} = req.params;
   const {title, type, url} = req.body;
@@ -59,6 +66,12 @@ const remove = async (req, res) => {
 }
 
 // PUT /v1/users/:userId/links/id
+// example
+// {
+//   type:"classic",
+//   url: "https://www.google.com",
+//   title: "Google"
+// }
 const update = async (req, res) => {
   const {userId, id} = req.params;
   const {title, type, url} = req.body;

@@ -14,7 +14,15 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   ListItem.init({
-    linkId: DataTypes.INTEGER,
+    linkId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        notNull: {msg: "List item must have a link id"},
+        notEmpty: {msg: "Link Id must not be empty."},
+        isInt: {msg: "Link id must be an integer"} // TODO; instead of user id, change to use UUID
+      }        
+    },
     title: DataTypes.STRING,
     location: DataTypes.STRING,
     show_time: DataTypes.DATE,

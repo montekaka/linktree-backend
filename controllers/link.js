@@ -1,5 +1,6 @@
 const {User, Link} = require('../models');
 
+// GET /v1/users/:userId/links
 const getAllByUserId = async (req, res) => {
   const {userId} = req.params;
   try {
@@ -12,6 +13,7 @@ const getAllByUserId = async (req, res) => {
   }
 }
 
+// POST /v1/users/:userId/links
 const create = async (req, res) => {
   const {userId} = req.params;
   const {title, type, url} = req.body;
@@ -26,7 +28,22 @@ const create = async (req, res) => {
   }
 }
 
+// GET /v1/users/:userId/links/id
+const get = async (req, res) => {
+  const {userId, id} = req.params;
+  try {
+    const user = await User.findOne({where: {id: userId}});
+    const link = await Link.findOne({where: {id, userId}})
+    return res.json(link);
+  } catch (err) {
+    console.log(err)
+    // const messages = err.errors.map((error) =>  {return {message: error.message}});
+    return res.status(500).json({error: "Something went wrong"})
+  }  
+}
+
 module.exports = {
   getAllByUserId,
-  create
+  create,
+  get
 }

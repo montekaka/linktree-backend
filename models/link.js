@@ -34,7 +34,14 @@ module.exports = (sequelize, DataTypes) => {
     url: DataTypes.STRING
   }, {
     sequelize,
-    modelName: 'Link',  
+    modelName: 'Link', 
+    validate: {
+      classicLinkTitleNotEmpty() {
+        if(this.type === "classic_links" && this.title === null) {
+          throw new Error('Classic Link must have a title, and title must not be empty');
+        }
+      }      
+    } 
   });
   return Link;
 };

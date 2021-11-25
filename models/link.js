@@ -15,7 +15,14 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Link.init({
-    userId: DataTypes.INTEGER,
+    userId: {
+      type: DataTypes.INTEGER,
+      validate: {
+        notNull: {msg: "Link must have an user id"},
+        notEmpty: {msg: "User Id must not be empty."},
+        isInt: {msg: "User id must be an integer"} // TODO; instead of user id, change to use UUID
+      }  
+    },
     type: {
       type: DataTypes.STRING,
       validate: {

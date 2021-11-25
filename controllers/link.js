@@ -5,8 +5,13 @@ const {filterObject} = require('../libs')
 const getAllByUserId = async (req, res) => {
   const {userId} = req.params;
   try {
-    const user = await User.findOne({where: {id: userId}});
-    const links = await user.getLinks();
+    // const user = await User.findOne({where: {id: userId}});
+    // const links = await user.getLinks();
+    const links = await Link.findAll({
+      where: {userId: userId}, 
+      order: [['createdAt', 'DESC']],
+      include: 'listItems'
+    })
     return res.json(links);
   } catch (err) {
     console.log(err);

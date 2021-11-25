@@ -1,4 +1,5 @@
 const express = require('express');
+const {sequelize} = require('./models');
 
 const port = 5000;
 const app = express();

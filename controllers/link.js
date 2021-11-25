@@ -60,7 +60,8 @@ const create = async (req, res) => {
   const {title, type, url} = req.body;
   
   try {
-    // const user = await User.findOne({where: {id: userId}});
+    const user = await User.findOne({where: {id: userId}});
+    if(!user) return res.status(500).json({error: [{message: "User not found"}]})
     const link = await Link.create({title, url, type, userId});
     return res.json(link);
   } catch (err) {
@@ -73,7 +74,9 @@ const create = async (req, res) => {
 const get = async (req, res) => {
   const {userId, id} = req.params;
   try {
-    // const user = await User.findOne({where: {id: userId}});
+    const user = await User.findOne({where: {id: userId}});
+    if(!user) return res.status(500).json({error: [{message: "User not found"}]})
+    
     const link = await Link.findOne({where: {id, userId}})
     return res.json(link);
   } catch (err) {
@@ -87,7 +90,9 @@ const get = async (req, res) => {
 const remove = async (req, res) => {
   const {userId, id} = req.params;
   try {
-    // const user = await User.findOne({where: {id: userId}});
+    const user = await User.findOne({where: {id: userId}});
+    if(!user) return res.status(500).json({error: [{message: "User not found"}]})
+
     const link = await Link.findOne({where: {id, userId}})
     await link.destroy()
     return res.json(link);
@@ -111,6 +116,9 @@ const update = async (req, res) => {
   const updateData = filterObject.removeUndefined({title, type, url})
 
   try {
+    const user = await User.findOne({where: {id: userId}});
+    if(!user) return res.status(500).json({error: [{message: "User not found"}]})
+
     const link = await Link.findOne({where: {id, userId}})
     link.set({...link, ...updateData});
     await link.save();

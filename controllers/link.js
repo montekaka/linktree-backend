@@ -1,4 +1,5 @@
 const {User, Link} = require('../models');
+const {filterObject} = require('../libs')
 
 // GET /v1/users/:userId/links
 const getAllByUserId = async (req, res) => {
@@ -57,9 +58,27 @@ const remove = async (req, res) => {
   }  
 }
 
+// PUT /v1/users/:userId/links/id
+const update = async (req, res) => {
+  const {userId, id} = req.params;
+  const {title, type, url} = req.body;
+  const updateData = filterObject.removeUndefined({title, type, url})
+
+  try {
+    const link = await Link.findOne({where: {id, userId}})
+    link.set({...link, ...updateData});
+    await link.save();
+    return res.json(link);
+  } catch (err) {
+    const messages = err.errors.map((error) =>  {return {message: error.message, filed: error.path}});
+    return res.status(500).json({error: messages})
+  }  
+}
+
 module.exports = {
   getAllByUserId,
   create,
   get,
-  remove
+  remove,
+  update
 }

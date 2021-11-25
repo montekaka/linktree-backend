@@ -17,6 +17,7 @@ module.exports = (sequelize, DataTypes) => {
   Link.init({
     userId: {
       type: DataTypes.INTEGER,
+      allowNull: false,
       validate: {
         notNull: {msg: "Link must have an user id"},
         notEmpty: {msg: "User Id must not be empty."},
@@ -25,6 +26,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     type: {
       type: DataTypes.STRING,
+      allowNull: false,
       validate: {
         notNull: {msg: "Link must have a type"},
         notEmpty: {msg: "Type must not be empty."}        
@@ -37,7 +39,7 @@ module.exports = (sequelize, DataTypes) => {
     modelName: 'Link', 
     validate: {
       classicLinkTitleNotEmpty() {
-        if(this.type === "classic_links" && this.title === null) {
+        if(this.type === "classic_link" && (this.title === null || this.title === undefined)) {
           throw new Error('Classic Link must have a title, and title must not be empty');
         }
       }      

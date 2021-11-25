@@ -2,6 +2,9 @@
 const {
   Model
 } = require('sequelize');
+
+const validator = require('validator');
+
 module.exports = (sequelize, DataTypes) => {
   class Link extends Model {
     /**
@@ -39,13 +42,25 @@ module.exports = (sequelize, DataTypes) => {
     modelName: 'Link', 
     validate: {
       classicLinkTitleNotEmpty() {
+        // check if a classic link has title
         if(this.type === "classic" && (this.title === null || this.title === undefined)) {
           throw new Error('Classic Link must have a title, and title must not be empty');
         }
       },
       classicLinkTitleLimit() {
+        // check if classic link title is less than 144 characters
         if(this.type === "classic" && this.title && this.title.length > 144) {
           throw new Error('Classic Link title must be fewer than 144 characters.');
+        }
+      },
+      classicLinkHasURL() {
+        if(this.type === 'classic' && (this.url === null || this.url === undefined)) {
+          throw new Error('Classic Link must have an URL, and URL must not be empty');
+        }
+      },
+      classicLinkHasValidURL() {
+        if(this.type === 'classic' && this.url && !validator.isURL(this.url)) {
+          throw new Error('Classic Link URL format invalid.');
         }
       }
     } 

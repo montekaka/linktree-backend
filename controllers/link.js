@@ -2,11 +2,39 @@ const {User, Link} = require('../models');
 const {filterObject} = require('../libs')
 
 // GET /v1/users/:userId/links
+// return 
+// [
+//   {
+//   "id": 9,
+//   "userId": 3,
+//   "type": "music_player",
+//   "title": "&Twice",
+//   "url": null,
+//   "createdAt": "2021-11-25T21:41:24.083Z",
+//   "updatedAt": "2021-11-25T21:41:24.083Z",
+//   "listItems": [
+//   {
+//   "id": 8,
+//   "linkId": 9,
+//   "title": "Spotify",
+//   "location": null,
+//   "showTime": null,
+//   "soldOut": null,
+//   "onSale": null,
+//   "url": "https://open.spotify.com/album/2MwyDQhotK4B1WcZ5ogrtB",
+//   "embedPlayerUrl": "https://open.spotify.com/embed/album/2MwyDQhotK4B1WcZ5ogrtB",
+//   "createdAt": "2021-11-25T22:05:59.537Z",
+//   "updatedAt": "2021-11-25T22:05:59.537Z"
+//   }
+//   ]
+//   },
+//   ...
+// ]
 const getAllByUserId = async (req, res) => {
   const {userId} = req.params;
   try {
     // const user = await User.findOne({where: {id: userId}});
-    // const links = await user.getLinks();
+    // const links = await user.getLinks();  
     const links = await Link.findAll({
       where: {userId: userId}, 
       order: [['createdAt', 'DESC']],

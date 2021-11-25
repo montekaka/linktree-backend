@@ -94,6 +94,14 @@ ListItem
 
 `npm install --save-dev sequelize-cli`
 
+Generate a model
+
+`npx sequelize-cli model:generate --name User --attributes firstName:string,lastName:string,email:string`
+
+Generate a seed
+
+`npx sequelize-cli seed:generate --name demo-user`
+
 ## Install all packages
 
 ```

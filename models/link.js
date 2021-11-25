@@ -42,7 +42,12 @@ module.exports = (sequelize, DataTypes) => {
         if(this.type === "classic_link" && (this.title === null || this.title === undefined)) {
           throw new Error('Classic Link must have a title, and title must not be empty');
         }
-      }      
+      },
+      classicLinkTitleLimit() {
+        if(this.type === "classic_link" && this.title && this.title.length > 144) {
+          throw new Error('Classic Link title must be fewer than 144 characters.');
+        }
+      }
     } 
   });
   return Link;

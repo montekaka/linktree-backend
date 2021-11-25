@@ -16,12 +16,18 @@ module.exports = (sequelize, DataTypes) => {
   };
   Link.init({
     userId: DataTypes.INTEGER,
-    type: DataTypes.STRING,
+    type: {
+      type: DataTypes.STRING,
+      validate: {
+        notNull: {msg: "Link must have a type"},
+        notEmpty: {msg: "Type must not be empty."}        
+      }       
+    },
     title: DataTypes.STRING,
     url: DataTypes.STRING
   }, {
     sequelize,
-    modelName: 'Link',
+    modelName: 'Link',  
   });
   return Link;
 };

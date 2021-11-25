@@ -1,5 +1,5 @@
 'use strict';
-const {users} = require('./data-mock');
+const {users} = require('../mock_data');
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {

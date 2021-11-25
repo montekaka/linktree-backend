@@ -48,7 +48,7 @@ Set up your own remote git repository and make commits as you would in your day 
 
 # Relationship
 1. User has many links, link belongs to user
-2. Link has many childLink, childlink belongs to link
+2. Link has many listItems, listItem belongs to link
 
 
 ## Schema
@@ -70,7 +70,7 @@ Link
 	- createdDate
 	- updatedDate
 
-ChildList
+ListItem
   - id: number
 	- linkId: number
 	- title: string	
@@ -78,13 +78,15 @@ ChildList
 	- show_time: date_time
 	- sold_out: boolean
 	- on_sale: boolean	
-	- platform_name: string
 	- url: string
   - embed_player_url: string
 	- createdDate
 	- updatedDate	
 
-_May be we make a http request on the backend to make sure the link return 200?_
+
+### To-do
+
+1. Make a http request on the backend to make sure the link return status code 200?
 
 ## Dependences
 

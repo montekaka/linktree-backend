@@ -13,12 +13,12 @@ const links = [
   {userId: 1, type:"classic_links", url: "https://www.yahoo.com", title: "Yahoo!", createdAt: new Date(), updatedAt: new Date()},
   {userId: 2, type:"classic_links", url: "https://www.google.com", title: "Google", createdAt: new Date(), updatedAt: new Date()},
   {userId: 3, type:"classic_links", url: "https://www.duckduckgo.com", title: "DuckDuckGo", createdAt: new Date(), updatedAt: new Date()},
-  {userId: 1, type:"show_lists", url: "https://www.hbo.com/last-week-tonight-with-john-oliver", title: "Tonight with John Oliver"},
-  {userId: 2, type:"show_lists", url: "https://www.bts.com", title: "BTS Live"},
-  {userId: 3, type:"show_lists", url: "https://www.kanye.com", title: "Kanye Live"},
-  {userId: 1, type: "music_players", title: "1989"},
-  {userId: 2, type: "music_players", title: "Acquired Podcast"},
-  {userId: 3, type: "music_players", name: "&Twice"}
+  {userId: 1, type:"show_lists", url: "https://www.hbo.com/last-week-tonight-with-john-oliver", title: "Tonight with John Oliver", createdAt: new Date(), updatedAt: new Date()},
+  {userId: 2, type:"show_lists", url: "https://www.bts.com", title: "BTS Live", createdAt: new Date(), updatedAt: new Date()},
+  {userId: 3, type:"show_lists", url: "https://www.kanye.com", title: "Kanye Live", createdAt: new Date(), updatedAt: new Date()},
+  {userId: 1, type: "music_players", title: "1989", createdAt: new Date(), updatedAt: new Date()},
+  {userId: 2, type: "music_players", title: "Acquired Podcast", createdAt: new Date(), updatedAt: new Date()},
+  {userId: 3, type: "music_players", title: "&Twice", createdAt: new Date(), updatedAt: new Date()}
 ]
 
 module.exports = {

@@ -18,19 +18,19 @@ module.exports = {
       location: {
         type: Sequelize.STRING
       },
-      show_time: {
+      showTime: {
         type: Sequelize.DATE
       },
-      sold_out: {
+      soldOut: {
         type: Sequelize.BOOLEAN
       },
-      on_sale: {
+      onSale: {
         type: Sequelize.BOOLEAN
       },
       url: {
         type: Sequelize.STRING
       },
-      embed_player_url: {
+      embedPlayerUrl: {
         type: Sequelize.STRING
       },
       createdAt: {

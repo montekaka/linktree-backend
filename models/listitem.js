@@ -25,11 +25,11 @@ module.exports = (sequelize, DataTypes) => {
     },
     title: DataTypes.STRING,
     location: DataTypes.STRING,
-    show_time: DataTypes.DATE,
-    sold_out: DataTypes.BOOLEAN,
-    on_sale: DataTypes.BOOLEAN,
+    showTime: DataTypes.DATE,
+    soldOut: DataTypes.BOOLEAN,
+    onSale: DataTypes.BOOLEAN,
     url: DataTypes.STRING,
-    embed_player_url: DataTypes.STRING
+    embedPlayerUrl: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'ListItem',

@@ -4,7 +4,24 @@ const users = [
   {id: 3, email: "xyz@abc.com", name: "xyz", createdAt: new Date(), updatedAt: new Date()}
 ]
 
+// - userId: number
+// - title: string (limit 144)
+// - url: stirng (validation starts with http:// and https://)
+// - type: string (TODO: create a table to store types)	
+
+const links = [
+  {userId: 1, type:"classic_links", url: "https://www.yahoo.com", title: "Yahoo!", createdAt: new Date(), updatedAt: new Date()},
+  {userId: 2, type:"classic_links", url: "https://www.google.com", title: "Google", createdAt: new Date(), updatedAt: new Date()},
+  {userId: 3, type:"classic_links", url: "https://www.duckduckgo.com", title: "DuckDuckGo", createdAt: new Date(), updatedAt: new Date()},
+  {userId: 1, type:"show_lists", url: "https://www.hbo.com/last-week-tonight-with-john-oliver", title: "Tonight with John Oliver"},
+  {userId: 2, type:"show_lists", url: "https://www.bts.com", title: "BTS Live"},
+  {userId: 3, type:"show_lists", url: "https://www.kanye.com", title: "Kanye Live"},
+  {userId: 1, type: "music_players", title: "1989"},
+  {userId: 2, type: "music_players", title: "Acquired Podcast"},
+  {userId: 3, type: "music_players", name: "&Twice"}
+]
 
 module.exports = {
-  users
+  users,
+  links
 }

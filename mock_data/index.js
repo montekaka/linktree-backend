@@ -22,13 +22,13 @@ const links = [
 ]
 
 const listItems = [
-  {linkId: 5, showTime: new Date(), location: "The Forum, Melbourne", soldOut: false, onSale: true},
-  {linkId: 5, showTime: new Date(), location: "Venue name, Sydney", soldOut: false, onSale: false},
-  {linkId: 5, showTime: new Date(), location: "Venue name, Sydney", soldOut: true, onSale: true},
-  {linkId: 8, title: "Apple Podcasts", url: "https://podcasts.apple.com/us/podcast/acquired/id1050462261", embedPlayerUrl: "https://embed.podcasts.apple.com/us/podcast/acquired/id1050462261"},
-  {linkId: 8, title: "Spotify", url: "https://open.spotify.com/show/7Fj0XEuUQLUqoMZQdsLXqp", embedPlayerUrl: "https://open.spotify.com/embed/show/7Fj0XEuUQLUqoMZQdsLXqp"},
-  {linkId: 8, title: "Google Podcast", url: "https://podcasts.google.com/feed/aHR0cHM6Ly9hY3F1aXJlZC5saWJzeW4uY29tL3Jzcw?nord=0", embedPlayerUrl: null},  
-  {linkId: 9, title: "Spotify", url: "https://open.spotify.com/album/2MwyDQhotK4B1WcZ5ogrtB", embedPlayerUrl: "https://open.spotify.com/embed/album/2MwyDQhotK4B1WcZ5ogrtB"}    
+  {linkId: 5, showTime: new Date(), location: "The Forum, Melbourne", soldOut: false, onSale: true, createdAt: new Date(), updatedAt: new Date()},
+  {linkId: 5, showTime: new Date(), location: "Venue name, Sydney", soldOut: false, onSale: false, createdAt: new Date(), updatedAt: new Date()},
+  {linkId: 5, showTime: new Date(), location: "Venue name, Sydney", soldOut: true, onSale: true, createdAt: new Date(), updatedAt: new Date()},
+  {linkId: 8, title: "Apple Podcasts", url: "https://podcasts.apple.com/us/podcast/acquired/id1050462261", embedPlayerUrl: "https://embed.podcasts.apple.com/us/podcast/acquired/id1050462261", createdAt: new Date(), updatedAt: new Date()},
+  {linkId: 8, title: "Spotify", url: "https://open.spotify.com/show/7Fj0XEuUQLUqoMZQdsLXqp", embedPlayerUrl: "https://open.spotify.com/embed/show/7Fj0XEuUQLUqoMZQdsLXqp", createdAt: new Date(), updatedAt: new Date()},
+  {linkId: 8, title: "Google Podcast", url: "https://podcasts.google.com/feed/aHR0cHM6Ly9hY3F1aXJlZC5saWJzeW4uY29tL3Jzcw?nord=0", embedPlayerUrl: null, createdAt: new Date(), updatedAt: new Date()},  
+  {linkId: 9, title: "Spotify", url: "https://open.spotify.com/album/2MwyDQhotK4B1WcZ5ogrtB", embedPlayerUrl: "https://open.spotify.com/embed/album/2MwyDQhotK4B1WcZ5ogrtB", createdAt: new Date(), updatedAt: new Date()}    
 ]
 
 module.exports = {

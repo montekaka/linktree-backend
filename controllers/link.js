@@ -1,4 +1,4 @@
-const {User} = require('../models');
+const {User, Link} = require('../models');
 
 const getAllByUserId = async (req, res) => {
   const {userId} = req.params;
@@ -12,6 +12,21 @@ const getAllByUserId = async (req, res) => {
   }
 }
 
+const create = async (req, res) => {
+  const {userId} = req.params;
+  const {title, type, url} = req.body;
+  
+  try {
+    const user = await User.findOne({where: {id: userId}});
+    const link = await Link.create({title, url, type, userId});
+    return res.json(link);
+  } catch (err) {
+    const messages = err.errors.map((error) =>  {return {message: error.message, filed: error.path}});
+    return res.status(500).json({error: messages})
+  }
+}
+
 module.exports = {
-  getAllByUserId
+  getAllByUserId,
+  create
 }

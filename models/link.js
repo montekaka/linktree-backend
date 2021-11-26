@@ -35,7 +35,7 @@ module.exports = (sequelize, DataTypes) => {
         notNull: {msg: "Link must have a type"},
         notEmpty: {msg: "Type must not be empty."}        
       }       
-    },
+    }, // TODO: consider to change type to a model, and sort typeId
     title: DataTypes.STRING,
     url: DataTypes.STRING
   }, {

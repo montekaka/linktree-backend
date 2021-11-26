@@ -56,5 +56,14 @@ describe("POST /v1/users/1/links", () => {
 
       expect(response.statusCode).toBe(500)
     })
+
+    test("should respond with an error array", async () => {
+      const response = await request(app).post("/v1/users/1/links").send({
+        type: "classic"
+      })
+
+      expect(response.body.error).toBeDefined();
+      expect(response.body.error.length).toBeGreaterThanOrEqual(0);
+    })
   })  
 })

@@ -40,6 +40,12 @@ const remove = async (req, res) => {
   }
 }
 
+// TODO:
+// - PUT request to update list item
+// - GET request to view a single list item
+// - POST request to bulk create list items
+// - POST reqeust to bulk update list items
+
 module.exports = {
   create,
   remove

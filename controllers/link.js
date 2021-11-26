@@ -129,6 +129,10 @@ const update = async (req, res) => {
   }  
 }
 
+// TODO:
+// - POST request to bulk create links
+// - POST reqeust to bulk update links
+
 module.exports = {
   getAllByUserId,
   create,

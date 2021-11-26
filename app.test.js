@@ -120,3 +120,25 @@ describe("POST /v1/links/2/listItems", () => {
     })    
   })
 })
+
+describe("GET /v1/users/1/links", () => {
+  describe("given an exist user id", () => {
+    test("should respond with an array of links", async () => {
+      const response = await request(app).get("/v1/users/2/links")
+      expect(response.body).toBeDefined();
+      expect(response.body.length).toBeGreaterThanOrEqual(0);
+    })  
+
+    test("should respond with status code 200", async () => {
+      const response = await request(app).get("/v1/users/2/links")
+      expect(response.statusCode).toBe(200)
+    })     
+    
+    test("should specify json in the content type header", async () => {
+      const response = await request(app).get("/v1/users/2/links")
+
+      expect(response.headers["content-type"]).toEqual(expect.stringContaining("json"));
+    })      
+   
+  })
+})

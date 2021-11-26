@@ -54,34 +54,37 @@ Set up your own remote git repository and make commits as you would in your day 
 ## Schema
 
 User
-  - id: integer
-	- email: string
-	- password: string
-	- name: string
-	- createdDate
-	- updatedDate	
+
+- id: integer
+- email: string
+- password: string
+- name: string
+- createdAt
+- updatedAt
 
 Link
-  - id: integer,
-	- userId: integer
-	- title: string (limit 144)
-	- url: stirng (validation starts with http:// and https://)
-	- type: string (TODO: create a table to store types)	  
-	- createdDate
-	- updatedDate	
+
+- id: integer,
+- userId: integer
+- title: string (limit 144)
+- url: stirng (validation starts with http:// and https://)
+- type: string (TODO: create a table to store types)	  
+- createdAt
+- updatedAt
 
 ListItem
-  - id: integer
-	- linkId: integer
-	- title: string	
-	- location: string
-	- showTime: date_time
-	- soldOut: boolean
-	- onSale: boolean	
-	- url: string
-  - embedPlayerUrl: string
-	- createdDate
-	- updatedDate	
+
+- id: integer
+- linkId: integer
+- title: string	
+- location: string
+- showTime: date_time
+- soldOut: boolean
+- onSale: boolean	
+- url: string
+- embedPlayerUrl: string
+- createdAt
+- updatedAt
 
 
 ### To-do

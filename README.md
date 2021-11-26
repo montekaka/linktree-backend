@@ -128,7 +128,7 @@ Get all links matching with userId, sorted by dateCreated.
 
 `GET /v1/users/:userId/links`
 
-Resoponse example:
+Respond example:
 
 ```
 [
@@ -196,7 +196,7 @@ Input data example
 }
 ```
 
-Repsonse data example
+Respond data example
 
 ```
 {
@@ -210,7 +210,7 @@ Repsonse data example
 }
 ```
 
-Error response example
+Error respond example
 
 ```
 {
@@ -240,7 +240,7 @@ Input data example
 }
 ```
 
-Response data example
+Respond data example
 
 ```
 {

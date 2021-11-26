@@ -38,12 +38,30 @@ module.exports = (sequelize, DataTypes) => {
       async urlNotEmpty() {
         // music play must have an url
         const linkId = this.linkId;
-        const link = await sequelize.models.Link.findOne({where: {id: linkId}});
+        const link = await sequelize.models.Link.findOne({where: {id: linkId}});        
         const linkType = link.type;
         if(linkType === 'music_player' && (this.url === null || this.url === undefined)) {
           throw new Error('Music Player must have a platform link.');
         }        
-      }      
+      },
+      async showTimeNotEmpty() {
+        // check shows_list has a future show time
+        const linkId = this.linkId;
+        const link = await sequelize.models.Link.findOne({where: {id: linkId}});        
+        const linkType = link.type;
+        if(linkType === 'shows_list' && (this.showTime === null || this.showTime === undefined || this.showTime <= new Date())) {
+          throw new Error('Shows list must have ha a futre show time.');
+        }       
+      },
+      async showLocationNotEmpty() {
+        // check shows_list has a location
+        const linkId = this.linkId;
+        const link = await sequelize.models.Link.findOne({where: {id: linkId}});        
+        const linkType = link.type;
+        if(linkType === 'shows_list' && (this.location === null || this.location === undefined)) {
+          throw new Error('Shows list must have ha a location.');
+        }        
+      }
     }
   });
   return ListItem;

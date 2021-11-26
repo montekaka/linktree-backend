@@ -54,7 +54,7 @@ Set up your own remote git repository and make commits as you would in your day 
 ## Schema
 
 User
-  - id: number
+  - id: integer
 	- email: string
 	- password: string
 	- name: string
@@ -62,17 +62,17 @@ User
 	- updatedDate	
 
 Link
-  - id: number,
-	- userId: number
+  - id: integer,
+	- userId: integer
 	- title: string (limit 144)
 	- url: stirng (validation starts with http:// and https://)
 	- type: string (TODO: create a table to store types)	  
 	- createdDate
-	- updatedDate
+	- updatedDate	
 
 ListItem
-  - id: number
-	- linkId: number
+  - id: integer
+	- linkId: integer
 	- title: string	
 	- location: string
 	- show_time: date_time
@@ -87,6 +87,8 @@ ListItem
 ### To-do
 
 1. Make a http request on the backend to make sure the link return status code 200?
+
+2. Add sorting order to both links and listItems to allow user to change the presentation
 
 ## Dependences
 

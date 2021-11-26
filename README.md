@@ -75,11 +75,11 @@ ListItem
 	- linkId: integer
 	- title: string	
 	- location: string
-	- show_time: date_time
-	- sold_out: boolean
-	- on_sale: boolean	
+	- showTime: date_time
+	- soldOut: boolean
+	- onSale: boolean	
 	- url: string
-  - embed_player_url: string
+  - embedPlayerUrl: string
 	- createdDate
 	- updatedDate	
 

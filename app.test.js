@@ -5,7 +5,16 @@ describe("POST /v1/users/1/links", () => {
   
   describe("given a type, title, and url", () => {
     // should save the type, title and url to the database
-    // should respond with a json object contain the link id
+    test("should respond with a json object contain the link id", async () => {
+      const response = await request(app).post("/v1/users/1/links").send({
+        type: "classic",
+        title: "Apple",
+        url: "https://www.apple.com"
+      })
+
+      expect(response.body.id).toBeDefined();
+    })
+
 
     test("should respond with a 200 status code", async () => {
       const response = await request(app).post("/v1/users/1/links").send({

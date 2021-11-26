@@ -4,7 +4,19 @@ const {app} = require('./app');
 describe("POST /v1/users/1/links", () => {
   
   describe("given a type, title, and url", () => {
-    // should save the type, title and url to the database
+    test("should save the type, title and url to the database", async () => {
+      const response = await request(app).post("/v1/users/1/links").send({
+        type: "classic",
+        title: "Apple",
+        url: "https://www.apple.com"
+      })
+
+      const {type, title, url} = response.body
+      expect(type).toBe("classic");
+      expect(title).toBe("Apple");
+      expect(url).toBe("https://www.apple.com");
+    })
+
     test("should respond with a json object contain the link id", async () => {
       const response = await request(app).post("/v1/users/1/links").send({
         type: "classic",
@@ -14,7 +26,6 @@ describe("POST /v1/users/1/links", () => {
 
       expect(response.body.id).toBeDefined();
     })
-
 
     test("should respond with a 200 status code", async () => {
       const response = await request(app).post("/v1/users/1/links").send({

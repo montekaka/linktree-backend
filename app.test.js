@@ -49,6 +49,12 @@ describe("POST /v1/users/1/links", () => {
   })
 
   describe("given a type, but missing title and url", () => {
-    // should respond with the status code 500
+    test("should respond with the status code 500", async () => {
+      const response = await request(app).post("/v1/users/1/links").send({
+        type: "classic"
+      })
+
+      expect(response.statusCode).toBe(500)
+    })
   })  
 })

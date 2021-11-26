@@ -122,4 +122,151 @@ $ npx sequelize-cli db:seed:all
 $ npm start
 ```
 
+## Endpoints
 
+Get all links matching with userId, sorted by dateCreated.
+
+`GET /v1/users/:userId/links`
+
+Resoponse example:
+
+```
+[
+  {
+    "id": 5,
+    "userId": 2,
+    "type": "shows_list",
+    "title": "BTS Live",
+    "url": "https://www.bts.com",
+    "createdAt": "2021-11-25T21:41:24.083Z",
+    "updatedAt": "2021-11-25T21:41:24.083Z",
+    "listItems": [
+      {
+        "id": 2,
+        "linkId": 5,
+        "title": null,
+        "location": "The Forum, Melbourne",
+        "showTime": "2021-11-25T22:05:59.537Z",
+        "soldOut": false,
+        "onSale": true,
+        "url": null,
+        "embedPlayerUrl": null,
+        "createdAt": "2021-11-25T22:05:59.537Z",
+        "updatedAt": "2021-11-25T22:05:59.537Z"
+      },
+      {
+        "id": 3,
+        "linkId": 5,
+        "title": null,
+        "location": "Venue name, Sydney",
+        "showTime": "2021-11-25T22:05:59.537Z",
+        "soldOut": false,
+        "onSale": false,
+        "url": null,
+        "embedPlayerUrl": null,
+        "createdAt": "2021-11-25T22:05:59.537Z",
+        "updatedAt": "2021-11-25T22:05:59.537Z"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "userId": 2,
+    "type": "classic",
+    "title": "Google",
+    "url": "https://www.google.com",
+    "createdAt": "2021-11-25T21:41:24.083Z",
+    "updatedAt": "2021-11-25T21:41:24.083Z",
+    "listItems": []
+  }
+]
+```
+
+Create a new link
+
+`POST /v1/users/:userId/links`
+
+Input data example
+
+```
+{
+	"type": "classic",
+	"url": "abc",
+	"title": "1234"
+}
+```
+
+Repsonse data example
+
+```
+{
+  "id": 10,
+  "title": "1234",
+  "url": "abc",
+  "type": "classic",
+  "userId": 2,
+  "updatedAt": "2021-11-26T01:08:39.646Z",
+  "createdAt": "2021-11-26T01:08:39.646Z"
+}
+```
+
+Error response example
+
+```
+{
+  "error": [
+    {
+      "message": "Classic Link must have a title, and title must not be empty",
+      "filed": "classicLinkTitleNotEmpty"
+    },
+    {
+      "message": "Classic Link must have an URL, and URL must not be empty",
+      "filed": "classicLinkHasURL"
+    }
+  ]
+}
+```
+
+Create a new list item
+
+`POST /v1/links/:linkId/listItems`
+
+Input data example
+
+```
+{
+	"title": "Podcast Casts",
+	"url": "https://pca.st/acquired"
+}
+```
+
+Response data example
+
+```
+{
+  "id": 25,
+  "title": "Podcast Casts",
+  "url": "https://pca.st/acquired",
+  "linkId": 9,
+  "updatedAt": "2021-11-26T01:06:56.051Z",
+  "createdAt": "2021-11-26T01:06:56.051Z",
+  "location": null,
+  "showTime": null,
+  "soldOut": null,
+  "onSale": null,
+  "embedPlayerUrl": null
+}
+```
+
+Error data example
+
+```
+{
+  "error": [
+    {
+      "message": "Music Player must have a platform link.",
+      "filed": "urlNotEmpty"
+    }
+  ]
+}
+```

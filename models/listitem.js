@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
         notNull: {msg: "List item must have a link id"},
         notEmpty: {msg: "Link Id must not be empty."},
         isInt: {msg: "Link id must be an integer"} // TODO; instead of user id, change to use UUID
-      }        
+      }      
     },
     title: DataTypes.STRING,
     location: DataTypes.STRING,
@@ -34,6 +34,17 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'ListItem',
+    validate: {
+      async urlNotEmpty() {
+        // music play must have an url
+        const linkId = this.linkId;
+        const link = await sequelize.models.Link.findOne({where: {id: linkId}});
+        const linkType = link.type;
+        if(linkType === 'music_player' && (this.url === null || this.url === undefined)) {
+          throw new Error('Music Player must have a platform link.');
+        }        
+      }      
+    }
   });
   return ListItem;
 };

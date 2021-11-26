@@ -2,6 +2,12 @@ const {User, Link, ListItem} = require('../models');
 const {filterObject} = require('../libs')
 
 // POST /v1/links/:linkId/listItems
+// data
+// {
+//   linkId: 8, 
+//   title: "Apple Podcasts", 
+//   url: "https://podcasts.apple.com/us/podcast/acquired/id1050462261", embedPlayerUrl: "https://embed.podcasts.apple.com/us/podcast/acquired/id1050462261"
+// }
 const create = async (req, res) => {
   const {linkId} = req.params;
   const {title, location, showTime, soldOut, onSale, url, embedPlayerUrl} = req.body;

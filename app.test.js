@@ -63,7 +63,7 @@ describe("POST /v1/users/1/links", () => {
       })
 
       expect(response.body.error).toBeDefined();
-      expect(response.body.error.length).toBeGreaterThanOrEqual(0);
+      expect(response.body.error.length).toBeGreaterThan(0);
     })
   })  
 })

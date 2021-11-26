@@ -67,3 +67,18 @@ describe("POST /v1/users/1/links", () => {
     })
   })  
 })
+
+describe("POST /v1/links/2/listItems", () => {
+  describe("given title and url", () => {
+    test("should save the title and url to the database", async () => {
+      const response = await request(app).post("/v1/links/2/listItems").send({
+        title: "Pocket Casts",
+        url: "https://pca.st/acquired"
+      })
+
+      const {title, url} = response.body
+      expect(title).toBe("Pocket Casts");
+      expect(url).toBe("https://pca.st/acquired");
+    })
+  })
+})

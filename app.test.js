@@ -71,7 +71,7 @@ describe("POST /v1/users/1/links", () => {
 describe("POST /v1/links/2/listItems", () => {
   describe("given title and url", () => {
     test("should save the title and url to the database", async () => {
-      const response = await request(app).post("/v1/links/2/listItems").send({
+      const response = await request(app).post("/v1/links/8/listItems").send({
         title: "Pocket Casts",
         url: "https://pca.st/acquired"
       })
@@ -82,7 +82,7 @@ describe("POST /v1/links/2/listItems", () => {
     })
 
     test("should respond with a json object contain the list item id ad status code 200", async () => {
-      const response = await request(app).post("/v1/links/2/listItems").send({
+      const response = await request(app).post("/v1/links/8/listItems").send({
         title: "Pocket Casts",
         url: "https://pca.st/acquired"
       })
@@ -92,12 +92,22 @@ describe("POST /v1/links/2/listItems", () => {
     })  
     
     test("should specify json in the content type header", async () => {
-      const response = await request(app).post("/v1/links/2/listItems").send({
+      const response = await request(app).post("/v1/links/8/listItems").send({
         title: "Pocket Casts",
         url: "https://pca.st/acquired"
       })
 
       expect(response.headers["content-type"]).toEqual(expect.stringContaining("json"));
     })      
+  })
+
+  describe("given title, but missing url", () => {
+    test("should respond with the status code 500", async () => {
+      const response = await request(app).post("/v1/links/8/listItems").send({
+        title: "Pocket Casts"
+      })
+
+      expect(response.statusCode).toBe(500)
+    })
   })
 })

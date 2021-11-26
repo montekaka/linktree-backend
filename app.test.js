@@ -80,9 +80,7 @@ describe("POST /v1/links/2/listItems", () => {
       expect(title).toBe("Pocket Casts");
       expect(url).toBe("https://pca.st/acquired");
     })
-  })
 
-  describe("given title and url", () => {
     test("should respond with a json object contain the list item id ad status code 200", async () => {
       const response = await request(app).post("/v1/links/2/listItems").send({
         title: "Pocket Casts",
@@ -91,6 +89,6 @@ describe("POST /v1/links/2/listItems", () => {
 
       expect(response.body.id).toBeDefined();
       expect(response.statusCode).toBe(200)
-    })
-  })  
+    })    
+  })
 })

@@ -50,7 +50,7 @@ module.exports = (sequelize, DataTypes) => {
         const link = await sequelize.models.Link.findOne({where: {id: linkId}});        
         const linkType = link.type;
         if(linkType === 'shows_list' && (this.showTime === null || this.showTime === undefined || this.showTime <= new Date())) {
-          throw new Error('Shows list must have ha a futre show time.');
+          throw new Error('Shows list must have a future show time.');
         }       
       },
       async showLocationNotEmpty() {
@@ -59,7 +59,7 @@ module.exports = (sequelize, DataTypes) => {
         const link = await sequelize.models.Link.findOne({where: {id: linkId}});        
         const linkType = link.type;
         if(linkType === 'shows_list' && (this.location === null || this.location === undefined)) {
-          throw new Error('Shows list must have ha a location.');
+          throw new Error('Shows list must have a location.');
         }        
       }
     }

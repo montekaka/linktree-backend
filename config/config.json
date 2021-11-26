@@ -7,9 +7,9 @@
     "dialect": "postgres"
   },
   "test": {
-    "username": "root",
+    "username": null,
     "password": null,
-    "database": "dlinktree_atabase_test",
+    "database": "linktree_database_development",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },

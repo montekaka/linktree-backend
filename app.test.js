@@ -109,5 +109,14 @@ describe("POST /v1/links/2/listItems", () => {
 
       expect(response.statusCode).toBe(500)
     })
+
+    test("should respond with an error array", async () => {
+      const response = await request(app).post("/v1/links/8/listItems").send({
+        title: "Pocket Casts"
+      })
+
+      expect(response.body.error).toBeDefined();
+      expect(response.body.error.length).toBeGreaterThan(0);
+    })    
   })
 })

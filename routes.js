@@ -7,4 +7,5 @@ module.exports = (app) => {
   app.delete(`/v1/users/:userId/links/:id`, linksController.remove)
   app.put(`/v1/users/:userId/links/:id`, linksController.update)
   app.post(`/v1/links/:linkId/listItems`, listItemsController.create)
+  app.delete(`/v1/links/:linkId/listItems/:id`, listItemsController.remove)  
 }

@@ -1,6 +1,7 @@
 const {User, Link, ListItem} = require('../models');
 const {filterObject} = require('../libs')
 
+// POST /v1/links/:linkId/listItems
 const create = async (req, res) => {
   const {linkId} = req.params;
   const {title, location, showTime, soldOut, onSale, url, embedPlayerUrl} = req.body;
@@ -18,6 +19,22 @@ const create = async (req, res) => {
   }
 }
 
+// DELETE /v1/links/:linkId/listItems/:id
+const remove = async (req, res) => {
+  const {linkId, id} = req.params;
+  try {
+    const link = await Link.findOne({where: {id: linkId}}); // TODO: change this to a model validation
+    if(!link) return res.status(500).json({error: [{message: "Link not found"}]})
+    
+    const listItem = await ListItem.findOne({where: {id: id, linkId}})
+    await listItem.destroy()
+    return res.json(listItem);
+  } catch (err) {
+    return res.status(500).json({error: "Something went wrong"})
+  }
+}
+
 module.exports = {
-  create
+  create,
+  remove
 }

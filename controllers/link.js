@@ -60,7 +60,7 @@ const create = async (req, res) => {
   const {title, type, url} = req.body;
   
   try {
-    const user = await User.findOne({where: {id: userId}});
+    const user = await User.findOne({where: {id: userId}}); // TODO: change this to a model validation
     if(!user) return res.status(500).json({error: [{message: "User not found"}]})
     const link = await Link.create({title, url, type, userId});
     return res.json(link);

@@ -89,6 +89,15 @@ describe("POST /v1/links/2/listItems", () => {
 
       expect(response.body.id).toBeDefined();
       expect(response.statusCode).toBe(200)
-    })    
+    })  
+    
+    test("should specify json in the content type header", async () => {
+      const response = await request(app).post("/v1/links/2/listItems").send({
+        title: "Pocket Casts",
+        url: "https://pca.st/acquired"
+      })
+
+      expect(response.headers["content-type"]).toEqual(expect.stringContaining("json"));
+    })      
   })
 })

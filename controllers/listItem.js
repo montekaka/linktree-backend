@@ -14,7 +14,7 @@ const create = async (req, res) => {
   const newData = filterObject.removeUndefined({title, location, showTime, soldOut, onSale, url, embedPlayerUrl});
 
   try {
-    const link = await Link.findOne({where: {id: linkId}}); // TODO: change this to a model validation
+    const link = await Link.findOne({where: {id: linkId}});
     if(!link) return res.status(500).json({error: [{message: "Link not found"}]})
     
     const listItem = await ListItem.create({...newData, linkId})
@@ -29,7 +29,7 @@ const create = async (req, res) => {
 const remove = async (req, res) => {
   const {linkId, id} = req.params;
   try {
-    const link = await Link.findOne({where: {id: linkId}}); // TODO: change this to a model validation
+    const link = await Link.findOne({where: {id: linkId}});
     if(!link) return res.status(500).json({error: [{message: "Link not found"}]})
     
     const listItem = await ListItem.findOne({where: {id: id, linkId}})

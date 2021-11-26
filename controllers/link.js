@@ -32,9 +32,7 @@ const {filterObject} = require('../libs')
 // ]
 const getAllByUserId = async (req, res) => {
   const {userId} = req.params;
-  try {
-    // const user = await User.findOne({where: {id: userId}});
-    // const links = await user.getLinks();  
+  try { 
     const links = await Link.findAll({
       where: {userId: userId}, 
       order: [['createdAt', 'DESC']],
@@ -60,7 +58,7 @@ const create = async (req, res) => {
   const {title, type, url} = req.body;
   
   try {
-    const user = await User.findOne({where: {id: userId}}); // TODO: change this to a model validation
+    const user = await User.findOne({where: {id: userId}});
     if(!user) return res.status(500).json({error: [{message: "User not found"}]})
     const link = await Link.create({title, url, type, userId});
     return res.json(link);
@@ -81,7 +79,6 @@ const get = async (req, res) => {
     return res.json(link);
   } catch (err) {
     console.log(err)
-    // const messages = err.errors.map((error) =>  {return {message: error.message}});
     return res.status(500).json({error: "Something went wrong"})
   }  
 }
@@ -98,7 +95,6 @@ const remove = async (req, res) => {
     return res.json(link);
   } catch (err) {
     console.log(err)
-    // const messages = err.errors.map((error) =>  {return {message: error.message}});
     return res.status(500).json({error: "Something went wrong"})
   }  
 }

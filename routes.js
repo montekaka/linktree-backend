@@ -1,4 +1,4 @@
-const {linksController} = require('./controllers');
+const {linksController, listItemsController} = require('./controllers');
 
 module.exports = (app) => {
   app.get(`/v1/users/:userId/links`, linksController.getAllByUserId)
@@ -6,4 +6,5 @@ module.exports = (app) => {
   app.get(`/v1/users/:userId/links/:id`, linksController.get)
   app.delete(`/v1/users/:userId/links/:id`, linksController.remove)
   app.put(`/v1/users/:userId/links/:id`, linksController.update)
+  app.post(`/v1/links/:linkId/listItems`, listItemsController.create)
 }

@@ -93,7 +93,54 @@ ListItem
 
 2. Add sorting order to both links and listItems to allow user to change the presentation
 
-## Dependences
+## Docker
+
+### Build the server and database:
+
+```
+docker-compose run web npx sequelize-cli db:create
+docker-compose run web npx sequelize-cli db:migrate 
+docker-compose run web npx sequelize-cli db:seed:all
+```
+
+### Run Tests
+
+```
+docker-compose run web npm test
+```
+
+### Start the server
+
+```
+docker-compose up
+```
+
+### Stop the server
+
+```
+docker-compose down
+```
+
+### Endpoints:
+
+Get all links from user id 1 
+
+http://localhost:8080/v1/users/1/links
+
+Create a new classic link for user 1
+
+`POST http://localhost:8080/v1/users/1/links`
+
+```
+{
+	"type": "classic",
+	"url": "abc",
+	"title": "1234"
+}
+```
+
+
+## Development Dependences
 
 ### Installing the Sequelize CLI
 
@@ -121,6 +168,7 @@ $ npx sequelize-cli db:seed:all
 ```
 $ npm start
 ```
+
 
 ## Endpoints
 

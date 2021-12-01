@@ -8,18 +8,4 @@ app.listen({port}, async () => {
   console.log(`listening on port ${port}!`);
   await sequelize.sync(); // connect database
   console.log('Database synced!')
-  // while(retires) {
-  //   try {
-  //     await sequelize.sync(); // connect database
-  //     console.log('Database synced!')
-  //     break;
-  //   } catch (err) {
-  //     console.log(err);
-  //     retires -= 1;
-  //     console.log(`retires left: ${retires}`);
-  //     // wait 5 seconds
-  //     await new Promise(res => setTimeout(res, 5000))
-  //   }
-  // }
-
 })

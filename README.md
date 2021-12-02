@@ -99,8 +99,7 @@ ListItem
 
 1. [Install Docker Desktop on Mac](https://docs.docker.com/desktop/mac/install/)
 
-2. [Install Docker Desktop on Windows
-](https://docs.docker.com/desktop/windows/install/)
+2. [Install Docker Desktop on Windows](https://docs.docker.com/desktop/windows/install/)
 
 ### Build the server and database:
 

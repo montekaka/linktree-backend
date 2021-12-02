@@ -100,6 +100,11 @@ ListItem
 ```
 docker-compose run web npx sequelize-cli db:create
 docker-compose run web npx sequelize-cli db:migrate 
+```
+
+### Seed the database
+
+```
 docker-compose run web npx sequelize-cli db:seed:all
 ```
 

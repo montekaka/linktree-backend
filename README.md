@@ -110,6 +110,8 @@ docker-compose run web npx sequelize-cli db:seed:all
 
 ### Run Tests
 
+Run the database seed before running the test
+
 ```
 docker-compose run web npm test
 ```

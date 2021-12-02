@@ -1,6 +1,11 @@
 const request = require('supertest');
 const {app} = require('./app');
 
+const title = [];
+for(let i = 0; i < 150; i++) {
+  title.push("a");
+}
+
 describe("POST /v1/users/1/links", () => {
   
   describe("given a type, title, and url", () => {
@@ -65,22 +70,19 @@ describe("POST /v1/users/1/links", () => {
       expect(response.body.error).toBeDefined();
       expect(response.body.error.length).toBeGreaterThan(0);
     })
-  })  
+  })    
+})
 
-  describe("given a classic type, but title is longer than 144 characters", () => {
+describe("POST /v1/links/1/listItems", () => {
+  describe("given a classic type, but title is longer than 144 characters", () => {    
     test("should respond with the status code 500 with an error array", async () => {
-      const title = [];
-      for(let i = 0; i < 150; i++) {
-        title.push("a");
-      }
-
       const response = await request(app).post("/v1/users/1/links").send({
         type: "classic",
         title: title.join(''),
-        url: "https://www.apple.com"        
+        url: "https://www.apple.com"         
       })
-
-      expect(response.statusCode).toBe(500)
+  
+      expect(response.body.error).toBeDefined();
       expect(response.body.error.length).toBeGreaterThan(0);
     })
   })

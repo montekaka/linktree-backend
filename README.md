@@ -98,6 +98,7 @@ ListItem
 ### Build the server and database:
 
 ```
+docker-compose build
 docker-compose run web npx sequelize-cli db:create
 docker-compose run web npx sequelize-cli db:migrate 
 ```
